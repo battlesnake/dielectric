@@ -1,0 +1,63 @@
+Name:
+	Dielectric
+
+Author:
+	Mark K Cowan, mark@battlesnake.co.uk
+
+Description:
+	Perform spectral analysis (acoustic or electrical resistance) with your
+	sound card.
+
+	Musician-class sound cards from the early to mid 2000s had some nice
+	technical features, before the entire market got drowned with the "HD"
+	fad.  An old Audigy 2 card can sample and drive with nearly 24-bit
+	resolution, at 192 kHz.
+
+	The front-speaker and headphone outputs have lowpass filters which cut
+	anything above 25 kHz, so use the rear-speaker output for your drive
+	signal, and try each input until you find one that isn't bandpass-
+	restricted to the audio range.  If you can use the kX drivers
+	[www.kxproject.com] instead of the standard Creative ones, it may help.
+	Be sure to select the correct input channel in the Windows audio mixer.
+
+Usage:
+	When the program is run, it will go through a series of prompts.
+	    A.	Select input device (e.g. kX Wave SBxxxx 10k2 0/1) - the device
+		to use for performing measurements.
+	    B.	Select output device (kX Wave SBxxxx 10k2 2/3) - the device to
+		emit the drive signal through.
+	    C.	The sweep duration (ideally, at least 10 seconds per decade of
+		sweep range)
+	    D.	The start frequency of the sweep
+	    E.	The end frequency of the sweep
+	    F.	The name of the dataset (will overwrite existing ones with the
+		same name)
+
+	I'll add some proper example schematics for electrical spectroscopy
+	when I have the time.  Drive across a potential divider, with a
+	resistor on the drive side of the divider and the subject to examine
+	on the grounded side.  The "microphone" line in the middle of the
+	divider is of course where the measurement is taken from.
+
+_________
+	 |
+    OUT	=|>------¬
+	 |       ||
+ (PC)	 |       ||   Resistor
+	 |       ||
+    IN	<|=-------
+	 |       /\
+	 |      |  |  Sample
+	 |       \/
+    GND	=|=-------
+_________|
+
+
+	The ground lines of the in/out lines should be connected together, and
+	to the sample ground.  This is shown in the above diagram as one ground
+	connection on the PC.
+
+
+	After that, hit <ENTER> to start and grab a coffee while the scan
+	progresses.  The data is saved in CSV format, which any good analysis
+	software (and also Excel) will have no problem accessing.
